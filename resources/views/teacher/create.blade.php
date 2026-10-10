@@ -26,7 +26,7 @@
                 <select name="area_id" id="area_id" class="form-select" required>
                     <option value="">-- Seleccione un Área --</option>
                     @foreach ($areas as $area)
-                        <option value="{{ $area->id }}">{{ $area->name }}</option>
+                        <option value="{{ $area['id'] }}">{{ $area['name'] }}</option>
                     @endforeach
                 </select>
             </div>
@@ -35,7 +35,7 @@
                 <select name="training_center_id" id="training_center_id" class="form-select" required>
                     <option value="">-- Seleccione un Centro --</option>
                     @foreach ($training_centers as $center)
-                        <option value="{{ $center->id }}">{{ $center->name }}</option>
+                        <option value="{{ $center['id'] }}">{{ $center['name'] }}</option>
                     @endforeach
                 </select>
             </div>

@@ -16,11 +16,11 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="name" class="form-label fw-bold">Nombre Completo</label>
-                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $teacher->name) }}" required>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $teacher['name']) }}" required>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="email" class="form-label fw-bold">Correo Electrónico</label>
-                        <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $teacher->email) }}" required>
+                        <input type="email" name="email" id="email" class="form-control" value="{{ old('email', $teacher['email']) }}" required>
                     </div>
                 </div>
 
@@ -31,8 +31,8 @@
                         <select name="area_id" id="area_id" class="form-select" required>
                             <option value="">-- Seleccione un Área --</option>
                             @foreach ($areas as $area)
-                                <option value="{{ $area->id }}" {{ old('area_id', $teacher->area_id) == $area->id ? 'selected' : '' }}>
-                                    {{ $area->name }}
+                                <option value="{{ $area['id'] }}" {{ old('area_id', $teacher['area_id']) == $area['id'] ? 'selected' : '' }}>
+                                    {{ $area['name'] }}
                                 </option>
                             @endforeach
                         </select>
@@ -42,8 +42,8 @@
                         <select name="training_center_id" id="training_center_id" class="form-select" required>
                             <option value="">-- Seleccione un Centro --</option>
                             @foreach ($training_centers as $center)
-                                <option value="{{ $center->id }}" {{ old('training_center_id', $teacher->training_center_id) == $center->id ? 'selected' : '' }}>
-                                    {{ $center->name }}
+                                <option value="{{ $center['id'] }}" {{ old('training_center_id', $teacher['training_center_id']) == $center['id'] ? 'selected' : '' }}>
+                                    {{ $center['name'] }}
                                 </option>
                             @endforeach
                         </select>
@@ -54,15 +54,15 @@
                 <div class="row">
                     <div class="col-md-4 mb-3">
                         <label for="age" class="form-label fw-bold">Edad</label>
-                        <input type="number" name="age" id="age" class="form-control" value="{{ old('age', $teacher->age) }}">
+                        <input type="number" name="age" id="age" class="form-control" value="{{ old('age', $teacher['age']) }}">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="phone" class="form-label fw-bold">Teléfono</label>
-                        <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $teacher->phone) }}">
+                        <input type="text" name="phone" id="phone" class="form-control" value="{{ old('phone', $teacher['phone']) }}">
                     </div>
                     <div class="col-md-4 mb-3">
                         <label for="profession" class="form-label fw-bold">Profesión / Títulos</label>
-                        <input type="text" name="profession" id="profession" class="form-control" value="{{ old('profession', $teacher->profession) }}">
+                        <input type="text" name="profession" id="profession" class="form-control" value="{{ old('profession', $teacher['profession']) }}">
                     </div>
                 </div>
 
@@ -70,13 +70,13 @@
                 <div class="row">
                     <div class="col-md-12 mb-3">
                         <label for="photo" class="form-label fw-bold">Ruta / URL de la Foto</label>
-                        <input type="text" name="photo" id="photo" class="form-control" value="{{ old('photo', $teacher->photo) }}">
+                        <input type="text" name="photo" id="photo" class="form-control" value="{{ old('photo', $teacher['photo']) }}">
                     </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="biography" class="form-label fw-bold">Se caracteriza por / Habilidades</label>
-                    <textarea name="biography" id="biography" class="form-control" rows="3">{{ old('biography', $teacher->biography) }}</textarea>
+                    <textarea name="biography" id="biography" class="form-control" rows="3">{{ old('biography', $teacher['biography']) }}</textarea>
                 </div>
 
                 <!-- Botones de Acción con Verde SENA -->

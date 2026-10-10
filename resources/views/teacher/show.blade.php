@@ -9,7 +9,7 @@
         <!-- Encabezado con Verde SENA -->
         <div class="card-header text-white d-flex justify-content-between align-items-center" style="background-color: #16780c;">
             <h3 class="mb-0">
-                {{ $teacher->name }}
+                {{ $teacher['name']}}
             </h3>
             <span class="badge bg-light text-dark fs-6">
                 {{ $teacher->profession ?? 'Instructor' }}
@@ -23,14 +23,14 @@
                 <div class="col-md-4 mb-3">
                     <label class="fw-bold">ID</label>
                     <div class="form-control">
-                        {{ $teacher->id }}
+                        {{ $teacher['id'] }}
                     </div>
                 </div>
 
                 <div class="col-md-4 mb-3">
                     <label class="fw-bold">Área</label>
                     <div class="form-control">
-                        {{ $teacher->area->name ?? $teacher->area_id ?? 'No asignada' }}
+                        {{ $teacher['area']['name'] ?? $teacher->area_id ?? 'No asignada' }}
                     </div>
                 </div>
 
@@ -47,14 +47,14 @@
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Nombre</label>
                     <div class="form-control">
-                        {{ $teacher->name }}
+                        {{ $teacher['name'] }}
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label class="fw-bold">Email</label>
                     <div class="form-control">
-                        {{ $teacher->email }}
+                        {{ $teacher['email'] }}
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                 <div class="col-md-4 mb-3">
                     <label class="fw-bold">Edad</label>
                     <div class="form-control">
-                        {{ $teacher->age ? $teacher->age . ' años' : 'No registrada' }}
+                        {{ $teacher['age'] ? $teacher['age'] . ' años' : 'No registrada' }}
                     </div>
                 </div>
 
@@ -100,14 +100,14 @@
                 <div class="col-md-6">
                     <label class="fw-bold">Fecha de creación</label>
                     <div class="form-control bg-light">
-                        {{ $teacher->created_at ? $teacher->created_at->format('d/m/Y H:i') : 'N/A' }}
+                        {{ $teacher['created_at'] ? date('d/m/Y H:i', strtotime($teacher['created_at'])) : 'N/A' }}
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <label class="fw-bold">Última actualización</label>
                     <div class="form-control bg-light">
-                        {{ $teacher->updated_at ? $teacher->updated_at->format('d/m/Y H:i') : 'N/A' }}
+                        {{ $teacher['updated_at'] ? date('d/m/Y H:i', strtotime($teacher['updated_at'])) : 'N/A' }}
                     </div>
                 </div>
             </div>

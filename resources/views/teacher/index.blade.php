@@ -29,26 +29,26 @@
         <tbody> 
             @foreach ($teachers as $teacher)
             <tr>
-                <td>{{ $teacher->id }}</td>
-                <td>{{ $teacher->name }}</td>
-                <td>{{ $teacher->email }}</td>
-                <td>{{ $teacher->area->name ?? 'Sin Área' }}</td>
-                <td>{{ $teacher->training_center->name ?? $teacher->trainingCenter->name ?? 'Sin Centro' }}</td>
+                <td>{{ $teacher['id'] }}</td>
+                <td>{{ $teacher['name'] }}</td>
+                <td>{{ $teacher['email'] }}</td>
+                <td>{{ $teacher['area']['name'] ?? 'Sin Área' }}</td>
+                <td>{{ $teacher['training_center']['name'] ?? $teacher->trainingCenter->name ?? 'Sin Centro' }}</td>
 
                 <td>
                     <!-- Botón Perfil con datos reales del modelo -->
                     <button type="button"
                         class="btn btn-sm text-white btn-perfil"
                         style="background-color: #16780c; border-color: #16780c;"
-                        data-id="{{ $teacher->id }}"
-                        data-name="{{ $teacher->name }}"
-                        data-email="{{ $teacher->email }}"
-                        data-area="{{ $teacher->area->name ?? 'Sin Área' }}"
-                        data-center="{{ $teacher->training_center->name ?? $teacher->trainingCenter->name ?? 'Sin Centro' }}"
-                        data-age="{{ $teacher->age ? $teacher->age . ' años' : 'Edad no registrada' }}"
-                        data-phone="{{ $teacher->phone ?? 'No registrado' }}"
-                        data-profession="{{ $teacher->profession ?? 'No especificada' }}"
-                        data-biography="{{ $teacher->biography ?? 'Sin información de biografía' }}"
+                        data-id="{{ $teacher['id'] }}"
+                        data-name="{{ $teacher['name'] }}"
+                        data-email="{{ $teacher['email'] }}"
+                        data-area="{{ $teacher['area']['name'] ?? 'Sin Área' }}"
+                        data-center="{{ $teacher['training_center']['name'] ?? $teacher['trainingCenter']['name'] ?? 'Sin Centro' }}"
+                        data-age="{{ $teacher['age'] ? $teacher['age'] . ' años' : 'Edad no registrada' }}"
+                        data-phone="{{ $teacher['phone'] ?? 'No registrado' }}"
+                        data-profession="{{ $teacher['profession'] ?? 'No especificada' }}"
+                        data-biography="{{ $teacher['biography'] ?? 'Sin información de biografía' }}"
                         data-bs-toggle="offcanvas"
                         data-bs-target="#panelInstructor">
                         <i class="bi bi-person-badge"></i> Perfil
@@ -56,15 +56,15 @@
                 </td>
 
                 <td>
-                    <a href="{{ route('teacher.show', $teacher->id) }}">Mostrar</a>
+                    <a href="{{ route('teacher.show', $teacher['id']) }}">Mostrar</a>
                 </td>
 
                 <td>
-                    <a href="{{ route('teacher.edit', $teacher->id) }}">Editar</a>
+                    <a href="{{ route('teacher.edit', $teacher['id']) }}">Editar</a>
                 </td>
 
                 <td>
-                    <form action="{{ route('teacher.destroy', $teacher->id) }}" method="POST">
+                    <form action="{{ route('teacher.destroy', $teacher['id']) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Desea eliminar este instructor?')">Eliminar</button>

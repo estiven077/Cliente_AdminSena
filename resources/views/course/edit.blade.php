@@ -13,28 +13,28 @@
         <label>
             Numero de Curso:
             <br>
-            <input type="number" name="course_number" value="{{ old('course_number', $course->course_number) }}">
+            <input type="number" name="course_number" value="{{ old('course_number', $course['course_number']) }}">
         </label>
         <br>
 
         <label>
             Día:
             <br>
-            <input type="date" name="day" value="{{ old('day', $course->day) }}">
+            <input type="date" name="day" value="{{ old('day', $course['day']) }}">
         </label>
         <br>
 
         <label>
             Área:
             <br>
-            <input type="number" name="area_id" value="{{ old('area_id', $course->area_id) }}">
+            <input type="number" name="area_id" value="{{ old('area_id', $course['area_id']) }}">
         </label>
         <br>
 
         <label>
             Centro de Formación:
             <br>
-            <input type="number" name="training_center_id" value="{{ old('training_center_id', $course->training_center_id) }}">
+            <input type="number" name="training_center_id" value="{{ old('training_center_id', $course['training_center_id']) }}">
         </label>
 
         <br><br>

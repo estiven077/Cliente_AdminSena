@@ -24,24 +24,23 @@
         <label for="area_id">Area: </label>
         <select name="area_id" id="area_id" class="form-control">
             <option value="">Selecione area</option>
-            @foreach($areas as $area)
-                <option value="{{$area->id}}">
-                    {{$area->name}}
+          @foreach($areas as $area)
+                <option value="{{ $area['id'] }}">
+                    {{ $area['name'] }}
                 </option>
-            @endforeach
+          @endforeach
         </select>
         <br><br>
 
         <label for="training_center_id">Centro de Formacion: </label>
-        <select name="training_center_id" id="training_center_id" class="form-control">
-            <option value="">Selecione un centro de formacion</option>
+         <select name="training_center_id" id="training_center_id" class="form-control">
+            <option value="">Seleccione un centro de formacion</option>
             @foreach($training_centers as $training_center)
-                <option value="{{$training_center->id}}">
-                    {{$training_center->name}}
+                <option value="{{ $training_center['id'] }}">
+                    {{ $training_center['name'] }}
                 </option>
             @endforeach
-
-        </select>
+         </select>
 
         <br><br>
 
