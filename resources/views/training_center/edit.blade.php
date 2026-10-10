@@ -13,14 +13,14 @@
         <label>
             Nombre:
             <br>
-            <input type="text" name="name" value="{{ old('name', $training_center->name) }}">
+            <input type="text" name="name" value="{{ old('name', $training_center['id']) }}">
         </label>
         <br>
 
         <label>
             Ubicación:
             <br>
-            <input type="text" name="location" value="{{ old('location', $training_center->location) }}">
+            <input type="text" name="location" value="{{ old('location', $training_center['location']) }}">
         </label>
         <br><br>
 

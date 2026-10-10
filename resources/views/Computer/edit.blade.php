@@ -13,14 +13,14 @@
         <label>
             Número:
             <br>
-            <input type="number" name="number" value="{{ old('number', $computer->number) }}">
+            <input type="number" name="number" value="{{ old('number', $computer['number']) }}">
         </label>
         <br>
 
         <label>
             Marca:
             <br>
-            <input type="text" name="brand" value="{{ old('brand', $computer->brand) }}">
+            <input type="text" name="brand" value="{{ old('brand', $computer['brand']) }}">
         </label>
         <br><br>
 

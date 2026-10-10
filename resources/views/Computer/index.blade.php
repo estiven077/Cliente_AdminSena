@@ -25,30 +25,30 @@
 
             @foreach ($computers as $computer)
             <tr>
-                <td>{{ $computer->id }}</td>
+                <td>{{ $computer['id'] }}</td>
 
                 <!-- 2. Agregamos la celda para renderizar la imagen -->
                 <td>
-                    @if ($computer->urlFoto)
-                    <img src="{{ asset('storage/images/' . $computer->urlFoto) }}" alt="Foto Computador" width="60" class="img-thumbnail">
+                    @if ($computer['urlFoto'])
+                    <img src="{{ asset('storage/images/' . $computer['urlFoto']) }}" alt="Foto Computador" width="60" class="img-thumbnail">
                     @else
                     <span class="badge bg-secondary">Sin foto</span>
                     @endif
                 </td>
 
-                <td>{{ $computer->number }}</td>
-                <td>{{ $computer->brand }}</td>
+                <td>{{ $computer['number'] }}</td>
+                <td>{{ $computer['brand'] }}</td>
 
                 <td>
-                    <a href="{{ route('computer.show', $computer->id) }}">Mostrar</a>
+                    <a href="{{ route('computer.show', $computer['id']) }}">Mostrar</a>
                 </td>
 
                 <td>
-                    <a href="{{ route('computer.edit', $computer->id) }}">Editar</a>
+                    <a href="{{ route('computer.edit', $computer['id']) }}">Editar</a>
                 </td>
 
                 <td>
-                    <form action="{{ route('computer.destroy', $computer->id) }}" method="POST">
+                    <form action="{{ route('computer.destroy', $computer['id']) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

@@ -32,7 +32,7 @@ class AreaController extends Controller
     {
         $url = env('URL_SERVER_API');
 
-        Http::post($url . '/areas', $request->all());
+        Http::post($url . '/area', $request->all());
 
         return redirect()->route('areas.index');
     }
@@ -41,7 +41,7 @@ class AreaController extends Controller
     {
         $url = env('URL_SERVER_API');
 
-        $area = $this->fetchDataFromApi($url . '/areas/' . $id);
+        $area = $this->fetchDataFromApi($url . '/area/' . $id);
 
         return view('area.show', compact('area'));
     }
@@ -50,7 +50,7 @@ class AreaController extends Controller
     {
         $url = env('URL_SERVER_API');
 
-        $area = $this->fetchDataFromApi($url . '/areas/' . $id);
+        $area = $this->fetchDataFromApi($url . '/area/' . $id);
 
         return view('area.edit', compact('area'));
     }
@@ -59,7 +59,7 @@ class AreaController extends Controller
     {
         $url = env('URL_SERVER_API');
 
-        Http::put($url . '/areas/' . $id, $request->all());
+        Http::put($url . '/area/' . $id, $request->all());
 
         return redirect()->route('areas.index');
     }
