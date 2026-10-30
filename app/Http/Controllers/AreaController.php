@@ -14,27 +14,13 @@ class AreaController extends Controller
         return $response->json();
     }
 
-    public function index()
+    public function index()   
     {
         $url = env('URL_SERVER_API');
 
         $areas = $this->fetchDataFromApi($url . '/area/index');
 
         return view('area.index', compact('areas'));
-    }
-
-    public function create()
-    {
-        return view('area.create');
-    }
-
-    public function store(Request $request)
-    {
-        $url = env('URL_SERVER_API');
-
-        Http::post($url . '/area', $request->all());
-
-        return redirect()->route('areas.index');
     }
 
     public function show($id)
@@ -46,13 +32,35 @@ class AreaController extends Controller
         return view('area.show', compact('area'));
     }
 
-    public function edit($id)
+    public function create()
     {
         $url = env('URL_SERVER_API');
+        // Si tu área requiere consumir otra entidad (como courses o teachers), ajústalo aquí si es necesario según el instructor
+        return view('area.create');
+    }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
+
+        $url = env('URL_SERVER_API');
+
+        $file = $request->file('imagen');
+
+        $response = Http::attach('imagen', file_get_contents($file->getRealPath()), $file->getClientOriginalName())
+        ->post($url . '/area', ['name' => $request->name]);
+
+        return redirect()->route('areas.index');
+    }
+
+    public function edit($id)
+    {
+        $url = env('URL_SERVER_API'); 
         $area = $this->fetchDataFromApi($url . '/area/' . $id);
-
-        return view('area.edit', compact('area'));
+        return view('area.edit', compact('area')); 
     }
 
     public function update(Request $request, $id)
@@ -66,10 +74,8 @@ class AreaController extends Controller
 
     public function destroy($id)
     {
-        $url = env('URL_SERVER_API');
-
-        Http::delete($url . '/area/' . $id);
-
+        $url = env('URL_SERVER_API'); 
+        Http::delete($url . '/area/' . $id); 
         return redirect()->route('areas.index');
     }
 }

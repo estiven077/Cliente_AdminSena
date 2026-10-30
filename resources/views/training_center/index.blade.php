@@ -3,7 +3,10 @@
 @section('content')
     <h1>Lista de Centros de Formación</h1>
     <br>
-
+    <a href="{{ route('training_center.create') }}" class="btn btn-success mb-3">
+        <i class="bi bi-plus-circle"></i> Nuevo Centro de Formación
+    </a>
+    
     <div class="container">
         <table id="idTraining_center" class="table table-striped table-bordered" style="width:100%">
             <thead>
@@ -11,19 +14,22 @@
                     <th>Id</th>
                     <th>Name</th>
                     <th>Location</th>
+                    <th>Imagen</th>
                     <th colspan="3">Acción</th>
                 </tr>
             </thead>
 
             <tbody>
-                <a href="{{ route('training_center.create') }}" class="btn btn-success mb-3">
-                    <i class="bi bi-plus-circle"></i> Nuevo Centro de Formación </a>
-
                 @foreach ($training_centers as $training_center)
                     <tr>
                         <td>{{ $training_center['id'] }}</td>
                         <td>{{ $training_center['name'] }}</td>
                         <td>{{ $training_center['location'] }}</td>
+                        <td>
+                            @if(isset($training_center['imagen_url']))
+                                <img src="{{ $training_center['imagen_url'] }}" alt="{{ $training_center['name'] }}" width="60" height="60" style="object-fit: cover; border-radius: 4px;">
+                            @endif
+                        </td>
 
                         <td>
                             <a href="{{ route('training_center.show', $training_center['id']) }}">Mostrar</a>
@@ -40,12 +46,10 @@
                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                             </form>
                         </td>
-
-                    </tr>
+                    </tr> 
                 @endforeach
             </tbody>
-
-        </table>
+        </table> 
         <br>
     </div>
 @endsection

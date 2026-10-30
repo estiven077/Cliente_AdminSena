@@ -30,9 +30,20 @@ class TrainingCenterController extends Controller
 
     public function store(Request $request)
     {
-        $url = env('URL_SERVER_API');
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
 
-        Http::post($url . '/training_center', $request->all());
+        $url = env('URL_SERVER_API');
+        $file = $request->file('imagen');
+
+        $response =Http::attach('imagen', file_get_contents($file->getRealPath()), $file->getClientOriginalName())
+            ->post($url . '/training_center', [
+                'name' => $request->name,
+                'location' => $request->location,
+            ]);
 
         return redirect()->route('training_center.index');
     }
@@ -55,7 +66,7 @@ class TrainingCenterController extends Controller
         return view('training_center.edit', compact('training_center'));
     }
 
-    public function update(Request $request, $id)
+   public function update(Request $request, $id)
     {
         $url = env('URL_SERVER_API');
 
@@ -72,4 +83,4 @@ class TrainingCenterController extends Controller
 
         return redirect()->route('training_center.index');
     }
-}
+    }

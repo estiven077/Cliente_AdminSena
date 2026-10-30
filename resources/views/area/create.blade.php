@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-
     <h1>Formulario Area</h1>
-    <form action="{{ route('areas.store') }}" method="POST">
+
+    <form action="{{ route('areas.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -14,8 +14,12 @@
         </label>
         <br><br>
 
-        <button type="submit" class="btn btn-secondary">Enviar Formulario</button>
-        
-    </form>
+        <div class="mb-3">
+            <label class="form-label">Imagen</label>
+            <input type="file" name="imagen" class="form-control" accept="image/*">
+        </div>
 
-    @endsection
+        <button type="submit" class="btn btn-outline-success btn-sm">Enviar Formulario:</button>
+        <br><br>
+    </form>
+@endsection

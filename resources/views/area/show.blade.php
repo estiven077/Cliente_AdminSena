@@ -30,6 +30,19 @@
 
             </div>
 
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label class="fw-bold">Imagen</label>
+                    <div class="mt-2">
+                        @if(isset($area['imagen_url']))
+                            <img src="{{ $area['imagen_url'] }}" alt="{{ $area['name'] }}" width="150" height="150" style="object-fit: cover; border-radius: 8px; border: 1px solid #ddd;">
+                        @else
+                            <p class="text-muted">No disponible</p>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
             <hr>
 
             <div class="row">

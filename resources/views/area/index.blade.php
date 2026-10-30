@@ -12,19 +12,22 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
+                    <th>Imagen</th>
                     <th colspan="3">Acción</th>
                 </tr>
             </thead>
 
             <tbody>
 
-                
-                    
-                    @foreach ($areas as $area)
+                @foreach ($areas as $area)
                     <tr>
                         <td>{{ $area['id'] }}</td>
-                        <td>{{ $area['name']}}</td>
-
+                        <td>{{ $area['name'] }}</td>
+                        <td>
+                            @if(isset($area['imagen_url']))
+                                <img src="{{ $area['imagen_url'] }}" alt="{{ $area['name'] }}" width="60" height="60" style="object-fit: cover; border-radius: 4px;">
+                            @endif
+                        </td>
 
                         <td>
                             <a href="{{ route('areas.show', $area['id']) }}">Mostrar</a>
@@ -41,8 +44,7 @@
                             <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                         </form>
                         </td>
-                    </tr>
-
+                    </tr> 
                 @endforeach
 
             </tbody>
