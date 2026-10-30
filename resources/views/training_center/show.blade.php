@@ -14,6 +14,13 @@
 
         <div class="card-body">
 
+            <!-- Sección de Imagen -->
+            @if(isset($training_center['imagen_url']))
+                <div class="text-center mb-4">
+                    <img src="{{ $training_center['imagen_url'] }}" alt="{{ $training_center['name'] }}" class="img-fluid rounded shadow-sm" style="max-height: 250px; object-fit: cover;">
+                </div>
+            @endif
+
             <div class="row">
 
                 <div class="col-md-6 mb-3">
